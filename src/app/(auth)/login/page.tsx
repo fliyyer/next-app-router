@@ -1,11 +1,27 @@
+"use client"
+
 import Link from "next/link";
 
 export default function LoginPage() {
+    const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        fetch('/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: e.currentTarget.email.value,
+                password: e.currentTarget.password.value
+            })
+        })
+    }
+
     return (
         <main className="max-w-2xl min-h-screen flex justify-center mx-auto items-center">
             <div
                 className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-                <form className="space-y-6" action="#">
+                <form className="space-y-6" onSubmit={(e) => handleLogin(e)}>
                     <h3 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
                     <div>
                         <label htmlFor="email" className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300">Your email</label>
