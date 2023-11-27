@@ -1,4 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+
+import { type } from "os";
+
 /* eslint-disable react/jsx-key */
 type ProductPageProps = {
     params: {
@@ -14,14 +17,23 @@ async function getData() {
     }
     return res.json();
 }
+
+interface Product {
+    id: number
+    title: string
+    price: number
+    image: string
+}
+
+
 export default async function ProductPage(props: ProductPageProps) {
     const { params } = props
-    const products = await getData()
+    const products: Product[] = await getData()
 
     return (
         <main className="flex flex-row mx-auto justify-between max-w-7xl min-h-screen">
             <div className="grid grid-cols-4 py-20 gap-8">
-                {products.map((product: any) => (
+                {products.map((product) => (
                     <div key={product.id} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <a href="#">
                             <img className="p-6 w-full h-64" src={product.image} alt={product.title} />

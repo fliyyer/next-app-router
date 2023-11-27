@@ -2,13 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 const datas = [
     {
         id: 1,
-        name: "Sepatu Adidas",
+        title: "Topi Adidas",
         price: 100000,
+        image: 'https://www.adidas.co.id/media/catalog/product/cache/3bec5fdb79d91223b1a151be2b21ce8d/i/i/ii3360_1_hardware_photography_front20center20view_grey.jpg'
     },
     {
         id: 2,
-        name: "Sepatu Reebok",
+        tile: "Baju Adidas",
         price: 150000,
+        image: 'https://www.adidas.co.id/media/catalog/product/cache/3bec5fdb79d91223b1a151be2b21ce8d/i/t/it8190_2_apparel_photography_front20center20view_grey.jpg'
     },
 ];
 export async function GET(request: NextRequest) {
